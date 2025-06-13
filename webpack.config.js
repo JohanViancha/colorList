@@ -7,8 +7,7 @@ const deps = require("./package.json").dependencies;
 
 const printCompilationMessage = require("./compilation.config.js");
 
-module.exports = (_, argv) => (_, argv) => {
-  return {
+module.exports = (_, argv) => ({
     output: {
       publicPath:
         argv.mode === "development"
@@ -89,5 +88,4 @@ module.exports = (_, argv) => (_, argv) => {
       }),
       new Dotenv(),
     ],
-  };
-};
+  });
