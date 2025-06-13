@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-const ColorList = ({ colorsList = []}) => {
+const ColorList = ({ colorsList = [], handleClickClearColors}) => {
 
   const handleCopy = (color) => {
     navigator.clipboard.writeText(color).then(() => {
@@ -17,6 +17,18 @@ const ColorList = ({ colorsList = []}) => {
   }
 
   return (
+    <>
+    {colorsList.length > 0 && (
+      <div className="text-center mb-3">
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={handleClickClearColors}
+        >
+          Limpiar Colores
+        </button>
+      </div>
+    )}
     <div className="list-group text-center">
       {colorsList.length > 0 ? (
         colorsList.map((color, index) => (
@@ -41,6 +53,7 @@ const ColorList = ({ colorsList = []}) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
